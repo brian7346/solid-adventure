@@ -1,0 +1,17 @@
+services:
+  dnmonster:
+    image: amouat/dnmonster:1.0
+  identidock:
+    build: .
+    expose:
+      - "9090"
+    environment:
+      - ENV=PROD
+    volumes:
+      - ./app:/app
+    links:
+      - dnmonster
+      - redis
+  redis:
+    image: redis:3.2
+
