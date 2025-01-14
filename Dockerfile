@@ -9,10 +9,6 @@ COPY app /app
 COPY cmd.sh /
 
 RUN chmod +x /cmd.sh
-# Добавляем права на чтение и выполнение для всех пользователей
-RUN chmod 755 /app && \
-    chmod 644 /app/identidock.py && \
-    chown -R uwsgi:uwsgi /app
 
 EXPOSE 9090 9191
 USER uwsgi
