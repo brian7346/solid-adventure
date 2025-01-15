@@ -1,15 +1,35 @@
 services:
   dnmonster:
     image: amouat/dnmonster:1.0
+    networks:
+      - jenkins_network
+      
   identidock:
     build: .
     expose:
       - "9090"
+      - "9191"
+    ports:
+      - "9090:9090"
     environment:
       - ENV=PROD
-    links:
+    depends_on:
       - dnmonster
       - redis
+    networks:
+      - jenkins_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9090/"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+      
   redis:
     image: redis:3.2
+    networks:
+      - jenkins_network
+
+networks:
+  jenkins_network:
+    driver: bridge
 
