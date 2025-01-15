@@ -3,8 +3,8 @@ set -e
 
 if [ "$ENV" = 'UNIT' ]; then
     echo "Running Unit Tests"
-    export FLASK_APP=app/tests.py
-    exec flask test
+    exec ls
+    exec python "tests.py"
 elif [ "$ENV" = 'DEV' ]; then
     echo "Running Development Server"
     exec python "identidock.py"
