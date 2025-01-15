@@ -3,7 +3,6 @@ set -e
 
 if [ "$ENV" = 'UNIT' ]; then
     echo "Running Unit Tests"
-    exec ls
     exec python "tests.py"
 elif [ "$ENV" = 'DEV' ]; then
     echo "Running Development Server"
