@@ -25,7 +25,7 @@ def mainpage():
     Hello <input type="text" name="name" value="{0}">
     <input type="submit" value="submit">
     </form>
-    <p>You look like a 3:
+    <p>You look like a 4:
     <img src="/monster/{1}"/>
     '''.format(name, name_hash)
     footer = '</body></html>'
