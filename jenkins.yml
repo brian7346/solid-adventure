@@ -2,7 +2,7 @@ services:
   dnmonster:
     image: amouat/dnmonster:1.0
     networks:
-      - jenkins_default
+      - jenkins_network
       
   identidock:
     build: .
@@ -15,14 +15,14 @@ services:
       - dnmonster
       - redis
     networks:
-      - jenkins_default
+      - jenkins_network
       
   redis:
     image: redis:3.2
     networks:
-      - jenkins_default
+      - jenkins_network
 
 networks:
-  jenkins_default:
+  jenkins_network:
     driver: bridge
 
